@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,51 @@
   <title>Nico Mahipus — Web Developer & LLM Researcher</title>
   <link rel="preconnect" href="https://avatars.githubusercontent.com" />
   <link rel="preconnect" href="https://github.com" />
+  <link rel="canonical" href="https://nicookie19.github.io/Nicookies-Portfolio/" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nicookie19.github.io/Nicookies-Portfolio/" />
+  <meta property="og:title" content="Nico Mahipus — Web Developer & LLM Researcher" />
+  <meta property="og:description" content="Web Developer, Laravel Expert, LLM Researcher. Building web apps, mobile experiences, and exploring AI/ML." />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/211638047?v=4" />
+  <meta property="og:site_name" content="Nicookie.dev" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://nicookie19.github.io/Nicookies-Portfolio/" />
+  <meta name="twitter:title" content="Nico Mahipus — Web Developer & LLM Researcher" />
+  <meta name="twitter:description" content="Web Developer, Laravel Expert, LLM Researcher. Building web apps, mobile experiences, and exploring AI/ML." />
+  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/211638047?v=4" />
+  <meta name="twitter:creator" content="@Nicookie19" />
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nico Mahipus",
+    "url": "https://nicookie19.github.io/Nicookies-Portfolio/",
+    "image": "https://avatars.githubusercontent.com/u/211638047?v=4",
+    "sameAs": [
+      "https://github.com/Nicookie19",
+      "https://linkedin.com/in/nico-mahipus"
+    ],
+    "jobTitle": ["Web Developer", "Laravel Expert", "LLM Researcher"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Omen.Inc"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of the Immaculate Conception"
+    },
+    "knowsAbout": ["Laravel", "PHP", "JavaScript", "TypeScript", "Python", "Dart", "Flutter", "Java", "Machine Learning", "LLM Research", "MediaPipe", "PyTorch", "TensorFlow"],
+    "description": "Web Developer specializing in Laravel framework and researcher in Large Language Models at the University of the Immaculate Conception."
+  }
+  </script>
+  
   <style>
     :root {
       --bg: #0f1117;
@@ -23,18 +68,17 @@
       --radius-sm: 8px;
       --transition: 150ms ease;
       --container: 1000px;
+      --header-height: 64px;
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --surface-2: #f1f5f9;
-        --border: #e2e8f0;
-        --text: #0f172a;
-        --muted: #64748b;
-        --accent: #4f46e5;
-        --accent-2: #06b6d4;
-      }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #4f46e5;
+      --accent-2: #06b6d4;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -47,6 +91,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     a { color: var(--accent-2); text-decoration: none; transition: color var(--transition); }
     a:hover { color: var(--accent); text-decoration: underline; }
@@ -71,9 +116,29 @@
     }
     nav .container { display: flex; justify-content: space-between; align-items: center; height: 64px; }
     .logo { font-weight: 700; letter-spacing: 0.3px; font-size: 1.1rem; color: var(--text); }
-    .nav-links { display: flex; gap: 8px; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: var(--radius-sm); transition: all var(--transition); }
     .nav-links a:hover, .nav-links a:focus { color: var(--text); background: var(--surface-2); text-decoration: none; }
+    
+    /* Theme Toggle Button */
+    .theme-toggle {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .theme-toggle:hover { border-color: var(--accent); background: var(--surface-2); }
+    .theme-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .theme-toggle svg { width: 20px; height: 20px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .theme-toggle .sun-icon { display: none; }
+    [data-theme="light"] .theme-toggle .sun-icon { display: block; }
+    [data-theme="light"] .theme-toggle .moon-icon { display: none; }
+    .theme-toggle:hover svg { transform: rotate(15deg); }
+    
     .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius-sm); color: var(--text); cursor: pointer; }
 
     header.hero { padding: 100px 0 80px; text-align: center; position: relative; }
@@ -86,7 +151,7 @@
     }
     .avatar:hover { transform: scale(1.02); box-shadow: 0 0 0 1px var(--border), 0 25px 50px -20px rgba(99, 102, 241, 0.4); }
     .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 24px 0 8px; font-weight: 800; letter-spacing: -0.02em; }
-    .hero .tagline { color: var(--accent-2); font-weight: 600; font-size: 1.1rem; margin-bottom: 16px; }
+    .hero .tagline { color: var(--accent-2); font-weight: 600; font-size: 1.1rem; margin-bottom: 16px; min-height: 1.4em; }
     .hero p.bio { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: 1.05rem; }
     .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .cta a { border-radius: var(--radius-sm); padding: 12px 28px; font-size: 15px; font-weight: 600; transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px; }
@@ -153,9 +218,7 @@
       background: color-mix(in srgb, var(--accent) 15%, transparent); color: #a5b4fc;
       transition: all var(--transition);
     }
-    @media (prefers-color-scheme: light) {
-      .lang { background: color-mix(in srgb, var(--accent) 15%, transparent); color: #4338ca; }
-    }
+    [data-theme="light"] .lang { background: color-mix(in srgb, var(--accent) 15%, transparent); color: #4338ca; }
     .lang:hover { background: color-mix(in srgb, var(--accent) 30%, transparent); transform: scale(1.05); }
     .star { color: #fbbf24; font-size: 13px; }
     .fork { color: #f97316; font-size: 13px; }
@@ -169,9 +232,86 @@
     @keyframes typing { from { width: 0 } to { width: 100% } }
     @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-2); } }
 
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px -4px var(--accent);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: #4f46e5;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px -8px var(--accent);
+    }
+    .back-to-top:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .back-to-top svg { width: 24px; height: 24px; }
+
+    /* GitHub Contribution Graph */
+    .contribution-graph {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 40px;
+    }
+    .contribution-graph h3 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: var(--text); }
+    .contribution-graph .legend { display: flex; gap: 16px; margin-bottom: 16px; font-size: 12px; color: var(--muted); }
+    .contribution-graph .legend span { display: flex; align-items: center; gap: 6px; }
+    .contribution-graph .legend .dot { width: 12px; height: 12px; border-radius: 2px; }
+    .contribution-grid { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 8px; }
+    .contribution-column { display: flex; flex-direction: column; gap: 4px; }
+    .contribution-day {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      transition: transform 0.2s ease;
+    }
+    .contribution-day:hover { transform: scale(1.3); z-index: 1; }
+    .contribution-day.level-0 { background: var(--border); }
+    .contribution-day.level-1 { background: #0e4429; }
+    .contribution-day.level-2 { background: #006d32; }
+    .contribution-day.level-3 { background: #26a641; }
+    .contribution-day.level-4 { background: #39d353; }
+    [data-theme="light"] .contribution-day.level-0 { background: #ebedf0; }
+    [data-theme="light"] .contribution-day.level-1 { background: #9be9a8; }
+    [data-theme="light"] .contribution-day.level-2 { background: #40c463; }
+    [data-theme="light"] .contribution-day.level-3 { background: #30a14e; }
+    [data-theme="light"] .contribution-day.level-4 { background: #216e39; }
+
+    /* Month labels */
+    .contribution-months { display: flex; gap: 4px; margin-bottom: 8px; }
+    .contribution-month { width: 12px; font-size: 10px; color: var(--muted); text-align: center; }
+
     footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; }
     footer a { color: var(--text); font-weight: 500; }
     footer a:hover { color: var(--accent-2); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 16px; font-size: 13px; }
+    .footer-links a { color: var(--muted); }
+    .footer-links a:hover { color: var(--accent-2); }
 
     @media (max-width: 720px) {
       .nav-links { position: fixed; top: 64px; right: 0; left: 0; background: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 16px 24px; gap: 4px; display: none; box-shadow: 0 20px 40px -20px rgba(0,0,0,0.4); }
@@ -182,6 +322,10 @@
       .avatar { width: 110px; height: 110px; }
       section { padding: 60px 0; }
       .grid { grid-template-columns: 1fr; }
+      .back-to-top { bottom: 16px; right: 16px; width: 44px; height: 44px; }
+      .contribution-grid { gap: 2px; }
+      .contribution-day { width: 10px; height: 10px; }
+      .contribution-month { width: 10px; }
     }
 
     @media (max-width: 480px) {
@@ -192,8 +336,9 @@
     @media (prefers-reduced-motion: reduce) {
       #bg-canvas { display: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
-      .avatar, .card, .skill, .lang { transition: none; }
+      .avatar, .card, .skill, .lang, .back-to-top { transition: none; }
       .card::before { display: none; }
+      .typing-text { animation: none; border-right: none; }
     }
   </style>
 </head>
@@ -212,6 +357,10 @@
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -220,7 +369,9 @@
     <div class="container">
       <img class="avatar" src="https://avatars.githubusercontent.com/u/211638047?v=4" alt="" loading="eager" fetchpriority="high" width="140" height="140" decoding="async" />
       <h1>Nico Mahipus</h1>
-      <div class="tagline">Web Developer · Laravel Expert · LLM Researcher</div>
+      <div class="tagline">
+        <span class="typing-text" id="typing-text" aria-live="polite">Web Developer · Laravel Expert · LLM Researcher</span>
+      </div>
       <p class="bio">
         Hi, I'm Nico — a web developer specializing in the Laravel framework and a researcher in
         Large Language Models at the University of the Immaculate Conception.
@@ -405,7 +556,22 @@
       <div class="container reveal">
         <h2 class="section-title" id="contact-title">Get in Touch</h2>
         <p class="sub">Let's build something together.</p>
-        <address style="font-style: normal; line-height: 2;">
+        
+        <!-- GitHub Contribution Graph -->
+        <div class="contribution-graph" aria-label="GitHub contribution activity">
+          <h3>GitHub Activity</h3>
+          <div class="legend">
+            <span><span class="dot" style="background: var(--border)"></span> No contributions</span>
+            <span><span class="dot level-1"></span> Low</span>
+            <span><span class="dot level-2"></span> Medium</span>
+            <span><span class="dot level-3"></span> High</span>
+            <span><span class="dot level-4"></span> Very high</span>
+          </div>
+          <div class="contribution-months" id="contribution-months" aria-hidden="true"></div>
+          <div class="contribution-grid" id="contribution-grid" role="img" aria-label="Contribution calendar"></div>
+        </div>
+        
+        <address style="font-style: normal; line-height: 2; margin-top: 32px;">
           <a href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 8px;" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
             github.com/Nicookie19
@@ -419,10 +585,44 @@
   <footer role="contentinfo">
     <div class="container">
       <p>&copy; 2026 Nico Mahipus · Built with <a href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">lots of coffee</a></p>
+      <div class="footer-links">
+        <a href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/nico-mahipus" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:nico.mahipus@example.com">Email</a>
+        <a href="#main">Back to top</a>
+      </div>
     </div>
   </footer>
 
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
   <script>
+    // Theme Toggle
+    (function() {
+      const toggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const stored = localStorage.getItem('theme');
+      const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+      html.setAttribute('data-theme', initialTheme);
+      updateAriaLabel(initialTheme);
+
+      toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateAriaLabel(next);
+      });
+
+      function updateAriaLabel(theme) {
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        toggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+      }
+    })();
+
     // Neural Network Background Animation
     (function() {
       const canvas = document.getElementById('bg-canvas');
@@ -434,12 +634,22 @@
       const CONNECTION_DISTANCE = 150;
       const MOUSE_INFLUENCE = 200;
 
-      const colors = {
-        node: '#6366f1',
-        nodeGlow: '#22d3ee',
-        line: '#6366f1',
-        lineGlow: '#22d3ee'
-      };
+      function getColors() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        return isDark ? {
+          node: '#6366f1',
+          nodeGlow: '#22d3ee',
+          line: '#6366f1',
+          lineGlow: '#22d3ee'
+        } : {
+          node: '#4f46e5',
+          nodeGlow: '#06b6d4',
+          line: '#4f46e5',
+          lineGlow: '#06b6d4'
+        };
+      }
+
+      let colors = getColors();
 
       function resize() {
         width = canvas.width = window.innerWidth;
@@ -462,7 +672,6 @@
 
       function updateNodes() {
         nodes.forEach(node => {
-          // Mouse attraction/repulsion
           const dx = mouse.x - node.x;
           const dy = mouse.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -476,19 +685,15 @@
             node.radius = node.baseRadius;
           }
 
-          // Apply velocity
           node.x += node.vx;
           node.y += node.vy;
 
-          // Boundary bounce
           if (node.x < 0 || node.x > width) node.vx *= -1;
           if (node.y < 0 || node.y > height) node.vy *= -1;
 
-          // Clamp
           node.x = Math.max(0, Math.min(width, node.x));
           node.y = Math.max(0, Math.min(height, node.y));
 
-          // Damping
           node.vx *= 0.99;
           node.vy *= 0.99;
         });
@@ -496,7 +701,6 @@
 
       function drawNodes() {
         nodes.forEach(node => {
-          // Glow effect
           const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 3);
           gradient.addColorStop(0, colors.nodeGlow + '40');
           gradient.addColorStop(1, colors.nodeGlow + '00');
@@ -505,7 +709,6 @@
           ctx.arc(node.x, node.y, node.radius * 3, 0, Math.PI * 2);
           ctx.fill();
 
-          // Node
           ctx.fillStyle = colors.node;
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
@@ -529,7 +732,6 @@
               ctx.lineTo(nodes[j].x, nodes[j].y);
               ctx.stroke();
 
-              // Mouse proximity glow on lines
               const mx = (nodes[i].x + nodes[j].x) / 2;
               const my = (nodes[i].y + nodes[j].y) / 2;
               const mdx = mouse.x - mx;
@@ -550,6 +752,7 @@
       }
 
       function animate() {
+        colors = getColors();
         ctx.clearRect(0, 0, width, height);
         updateNodes();
         drawConnections();
@@ -578,7 +781,6 @@
         mouse.y = -1000;
       });
 
-      // Touch support
       document.addEventListener('touchmove', (e) => {
         if (e.touches[0]) {
           mouse.x = e.touches[0].clientX;
@@ -586,7 +788,6 @@
         }
       }, { passive: true });
 
-      // Initialize
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         init();
       }
@@ -651,6 +852,153 @@
         const scrolled = window.pageYOffset;
         hero.style.transform = `translateY(${scrolled * 0.3}px)`;
       }, { passive: true });
+    })();
+
+    // Typing Animation - Dynamic text rotation
+    (function() {
+      const texts = [
+        'Web Developer · Laravel Expert · LLM Researcher',
+        'Building AI-powered applications',
+        'Crafting clean, scalable code',
+        'Exploring the future of ML'
+      ];
+      const el = document.getElementById('typing-text');
+      if (!el) return;
+      let i = 0, j = 0, deleting = false;
+      
+      function type() {
+        const current = texts[i];
+        if (deleting) {
+          el.textContent = current.slice(0, j--);
+        } else {
+          el.textContent = current.slice(0, j++);
+        }
+        
+        if (!deleting && j === current.length + 1) {
+          deleting = true;
+          setTimeout(type, 2000);
+        } else if (deleting && j === 0) {
+          deleting = false;
+          i = (i + 1) % texts.length;
+          setTimeout(type, 500);
+        } else {
+          setTimeout(type, deleting ? 50 : 100);
+        }
+      }
+      type();
+    })();
+
+    // Back to Top Button
+    (function() {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }, { passive: true });
+      
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // GitHub Contribution Graph
+    (function() {
+      const grid = document.getElementById('contribution-grid');
+      const monthsEl = document.getElementById('contribution-months');
+      if (!grid || !monthsEl) return;
+
+      // Generate mock contribution data (52 weeks * 7 days = 364 days)
+      // In production, you'd fetch this from GitHub API
+      function generateMockData() {
+        const data = [];
+        const today = new Date();
+        const startDate = new Date(today);
+        startDate.setDate(today.getDate() - 364);
+        
+        for (let d = new Date(startDate); d <= today; d.setDate(d.getDate() + 1)) {
+          // Simulate realistic contribution pattern
+          const dayOfWeek = d.getDay();
+          const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+          const baseProb = isWeekend ? 0.3 : 0.6;
+          const rand = Math.random();
+          
+          let level = 0;
+          if (rand < baseProb * 0.2) level = 0;
+          else if (rand < baseProb * 0.5) level = 1;
+          else if (rand < baseProb * 0.8) level = 2;
+          else if (rand < baseProb * 0.95) level = 3;
+          else level = 4;
+          
+          // Some days with no contributions
+          if (Math.random() < 0.15) level = 0;
+          
+          data.push({ date: new Date(d), level });
+        }
+        return data;
+      }
+
+      const contributions = generateMockData();
+      
+      // Group by week
+      const weeks = [];
+      let currentWeek = [];
+      contributions.forEach((day, i) => {
+        currentWeek.push(day);
+        if (day.date.getDay() === 0 || i === contributions.length - 1) {
+          weeks.push(currentWeek);
+          currentWeek = [];
+        }
+      });
+
+      // Render months
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const renderedMonths = new Set();
+      weeks.forEach((week, w) => {
+        if (week.length > 0) {
+          const month = week[0].date.getMonth();
+          const year = week[0].date.getFullYear();
+          const key = `${year}-${month}`;
+          if (!renderedMonths.has(key)) {
+            renderedMonths.add(key);
+            const span = document.createElement('span');
+            span.className = 'contribution-month';
+            span.textContent = monthNames[month];
+            monthsEl.appendChild(span);
+          } else {
+            const span = document.createElement('span');
+            span.className = 'contribution-month';
+            span.textContent = '';
+            monthsEl.appendChild(span);
+          }
+        }
+      });
+
+      // Render grid
+      weeks.forEach(week => {
+        const col = document.createElement('div');
+        col.className = 'contribution-column';
+        week.forEach(day => {
+          const cell = document.createElement('div');
+          cell.className = `contribution-day level-${day.level}`;
+          cell.setAttribute('data-date', day.date.toISOString().split('T')[0]);
+          cell.setAttribute('data-level', day.level);
+          cell.title = `${day.date.toLocaleDateString()}: ${day.level === 0 ? 'No' : day.level} contribution${day.level !== 1 ? 's' : ''}`;
+          col.appendChild(cell);
+        });
+        // Pad to 7 days if needed
+        while (col.children.length < 7) {
+          const cell = document.createElement('div');
+          cell.className = 'contribution-day level-0';
+          cell.style.visibility = 'hidden';
+          col.appendChild(cell);
+        }
+        grid.appendChild(col);
+      });
     })();
   </script>
 </body>
