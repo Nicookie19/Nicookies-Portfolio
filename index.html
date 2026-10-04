@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nico Mahipus - Web Developer, Laravel Expert, LLM Researcher. Building web apps, mobile experiences, and exploring AI/ML." />
+  <meta name="theme-color" content="#0f1117" />
+  <title>Nico Mahipus — Web Developer & LLM Researcher</title>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+  <link rel="preconnect" href="https://github.com" />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #171a23;
+      --surface-2: #1e2230;
+      --border: #262b3a;
+      --text: #e6e9f0;
+      --muted: #9aa3b5;
+      --accent: #6366f1;
+      --accent-2: #22d3ee;
+      --focus: #22d3ee;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: 150ms ease;
+      --container: 1000px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --surface-2: #f1f5f9;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #64748b;
+        --accent: #4f46e5;
+        --accent-2: #06b6d4;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--accent-2); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--accent); text-decoration: underline; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); z-index: 100; }
+    .skip-link:focus { top: 16px; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-weight: 700; letter-spacing: 0.3px; font-size: 1.1rem; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; padding: 8px 12px; border-radius: var(--radius-sm); transition: all var(--transition); }
+    .nav-links a:hover, .nav-links a:focus { color: var(--text); background: var(--surface-2); text-decoration: none; }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius-sm); color: var(--text); cursor: pointer; }
+
+    header.hero { padding: 100px 0 80px; text-align: center; }
+    .avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 0 0 1px var(--border), 0 20px 40px -20px rgba(0,0,0,0.4);
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 24px 0 8px; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .tagline { color: var(--accent-2); font-weight: 600; font-size: 1.1rem; margin-bottom: 16px; }
+    .hero p.bio { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: 1.05rem; }
+    .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta a { border-radius: var(--radius-sm); padding: 12px 28px; font-size: 15px; font-weight: 600; transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+    .cta .primary { background: var(--accent); color: #fff; border: none; }
+    .cta .primary:hover { background: #4f46e5; transform: translateY(-1px); box-shadow: 0 8px 20px -8px var(--accent); text-decoration: none; }
+    .cta .ghost { border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .cta .ghost:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); text-decoration: none; }
+
+    section { padding: 80px 0; }
+    h2.section-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 16px; font-weight: 700;
+    }
+    h2.section-title::after {
+      content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent);
+    }
+    .sub { color: var(--muted); margin-bottom: 40px; font-size: 1.05rem; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 8px 18px; font-size: 14px; font-weight: 500;
+      transition: all var(--transition);
+    }
+    .skill:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.3); }
+    .card h3 { font-size: 1.15rem; margin-bottom: 10px; font-weight: 600; line-height: 1.3; }
+    .card h3 a { color: var(--text); transition: color var(--transition); }
+    .card h3 a:hover { color: var(--accent-2); text-decoration: none; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.6; flex: 1; }
+    .card .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; }
+    .lang {
+      display: inline-flex; align-items: center; gap: 4px;
+      border-radius: 6px; padding: 4px 12px; font-size: 12px; font-weight: 500;
+      background: color-mix(in srgb, var(--accent) 15%, transparent); color: #a5b4fc;
+    }
+    @media (prefers-color-scheme: light) {
+      .lang { background: color-mix(in srgb, var(--accent) 15%, transparent); color: #4338ca; }
+    }
+    .star { color: #fbbf24; font-size: 13px; }
+    .fork { color: #f97316; font-size: 13px; }
+
+    footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--muted); font-size: 14px; }
+    footer a { color: var(--text); font-weight: 500; }
+    footer a:hover { color: var(--accent-2); }
+
+    @media (max-width: 720px) {
+      .nav-links { position: fixed; top: 64px; right: 0; left: 0; background: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 16px 24px; gap: 4px; display: none; box-shadow: 0 20px 40px -20px rgba(0,0,0,0.4); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 14px 16px; border-radius: var(--radius-sm); }
+      .mobile-menu-btn { display: block; }
+      .hero { padding: 70px 0 60px; }
+      .avatar { width: 110px; height: 110px; }
+      section { padding: 60px 0; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .cta a { padding: 12px 20px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav aria-label="Main navigation">
+    <div class="container">
+      <span class="logo" aria-hidden="true">Nicookie.dev</span>
+      <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="nav-links" id="nav-links" role="navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <img class="avatar" src="https://avatars.githubusercontent.com/u/211638047?v=4" alt="" loading="eager" fetchpriority="high" width="140" height="140" decoding="async" />
+      <h1>Nico Mahipus</h1>
+      <div class="tagline">Web Developer · Laravel Expert · LLM Researcher</div>
+      <p class="bio">
+        Hi, I'm Nico — a web developer specializing in the Laravel framework and a researcher in
+        Large Language Models at the University of the Immaculate Conception.
+        I build web apps, mobile experiences, and tinker with ML and game projects.
+      </p>
+      <div class="cta">
+        <a class="primary" href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a class="ghost" href="#projects">See my work</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="section-title" id="about-title">About Me</h2>
+        <p class="sub">A quick snapshot of who I am.</p>
+        <p>
+          I'm a developer based in Davao City with a passion for full-stack web development powered by
+          Laravel, plus an interest in mobile app development (Flutter) and AI/LLM research.
+          I've worked on everything from nutrition assistant apps and magazine-style websites to
+          machine learning benchmarks, data analysis notebooks, and Java games.
+        </p>
+        <p style="margin-top: 16px;">Currently associated with <strong>Omen.Inc</strong>.</p>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <div class="skills" role="list" aria-label="Technical skills">
+          <span class="skill" role="listitem">Laravel</span>
+          <span class="skill" role="listitem">PHP</span>
+          <span class="skill" role="listitem">JavaScript</span>
+          <span class="skill" role="listitem">TypeScript</span>
+          <span class="skill" role="listitem">HTML / CSS</span>
+          <span class="skill" role="listitem">Dart / Flutter</span>
+          <span class="skill" role="listitem">Python</span>
+          <span class="skill" role="listitem">Java</span>
+          <span class="skill" role="listitem">Jupyter / Data Science</span>
+          <span class="skill" role="listitem">LLM Research</span>
+          <span class="skill" role="listitem">Git / GitHub</span>
+          <span class="skill" role="listitem">REST APIs</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <p class="sub">Things I've built and worked on recently.</p>
+        <div class="grid" role="list" aria-label="Project showcase">
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/CCS-Showcase" target="_blank" rel="noopener noreferrer">CCS Showcase</a></h3>
+            <p>A showcase project built with CSS demonstrating modern styling techniques and layouts.</p>
+            <div class="meta"><span class="lang">CSS</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/BrainBox_MobileApp" target="_blank" rel="noopener noreferrer">BrainBox Mobile App</a></h3>
+            <p>A cross-platform mobile application built with Flutter and Dart for organizing ideas and notes.</p>
+            <div class="meta"><span class="lang">Dart</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Vibe_Magazine-Neo-" target="_blank" rel="noopener noreferrer">Vibe Magazine (Neo)</a></h3>
+            <p>A magazine-style web project showcasing modern, editorial layouts and rich front-end interactions.</p>
+            <div class="meta"><span class="lang">JavaScript</span> <span class="star" aria-label="1 star">★ 1</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Flutter_App" target="_blank" rel="noopener noreferrer">Flutter App</a></h3>
+            <p>A cross-platform mobile application built with Flutter and Dart.</p>
+            <div class="meta"><span class="lang">Dart</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/LLM-Model-Manager" target="_blank" rel="noopener noreferrer">LLM Model Manager</a></h3>
+            <p>A Dart/Flutter application for managing large language models — fitting given my LLM research background.</p>
+            <div class="meta"><span class="lang">Dart</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Benchmark" target="_blank" rel="noopener noreferrer">Benchmark</a></h3>
+            <p>A Python-based benchmarking project for tracking and measuring performance metrics.</p>
+            <div class="meta"><span class="lang">Python</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/-Dart-Console-Application" target="_blank" rel="noopener noreferrer">Dart Console Application</a></h3>
+            <p>A command-line program written in Dart exploring console app patterns and logic.</p>
+            <div class="meta"><span class="lang">Dart</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Iris-Dataset" target="_blank" rel="noopener noreferrer">Iris Dataset</a></h3>
+            <p>A Jupyter notebook exploring the classic Iris dataset with data analysis and machine learning.</p>
+            <div class="meta"><span class="lang">Jupyter Notebook</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Nutritional_Intelligence_Consumption_Assistant_N.I.C.A" target="_blank" rel="noopener noreferrer">N.I.C.A — Nutrition Assistant</a></h3>
+            <p>Nutritional Intelligence Consumption Assistant built with Laravel/PHP to help track and plan nutrition intake.</p>
+            <div class="meta"><span class="lang">PHP</span> <span class="lang">Laravel</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Programmed_Escapist" target="_blank" rel="noopener noreferrer">Programmed Escapist</a></h3>
+            <p>A Java-based game project about escaping a programmed world. ⭐ starred by the community.</p>
+            <div class="meta"><span class="lang">Java</span> <span class="star" aria-label="1 star">★ 1</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Relicborne_GameFiles" target="_blank" rel="noopener noreferrer">Relicborne GameFiles</a></h3>
+            <p>A Java game project (v10.25) — game files and assets for an evolving game project.</p>
+            <div class="meta"><span class="lang">Java</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/BrainBox" target="_blank" rel="noopener noreferrer">BrainBox</a></h3>
+            <p>A Java application — a knowledge/notes box for brainstorming and organizing ideas.</p>
+            <div class="meta"><span class="lang">Java</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/WebViser" target="_blank" rel="noopener noreferrer">WebViser</a></h3>
+            <p>A JavaScript web project focused on browser-based visualizations and interactive UI.</p>
+            <div class="meta"><span class="lang">JavaScript</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Project_Sweets-Ver1.8-" target="_blank" rel="noopener noreferrer">Project Sweets v1.8</a></h3>
+            <p>An HTML-based sweets-themed web project (v1.8), forked twice. A favorite among folks!</p>
+            <div class="meta"><span class="lang">HTML</span> <span class="fork" aria-label="2 forks">🍴 2</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/ByteLife_q2_project_Mahipus_Delos-Santos" target="_blank" rel="noopener noreferrer">ByteLife Q2 Project</a></h3>
+            <p>A quarter project built in HTML — a collaborative class deliverable.</p>
+            <div class="meta"><span class="lang">HTML</span></div>
+          </article>
+
+          <article class="card" role="listitem">
+            <h3><a href="https://github.com/Nicookie19/Mahipus_TLA4" target="_blank" rel="noopener noreferrer">Mahipus TLA4</a></h3>
+            <p>A Teaching and Learning Activity submission built in HTML.</p>
+            <div class="meta"><span class="lang">HTML</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="section-title" id="contact-title">Get in Touch</h2>
+        <p class="sub">Let's build something together.</p>
+        <address style="font-style: normal; line-height: 2;">
+          <a href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 8px;" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            github.com/Nicookie19
+          </a><br />
+          <span style="color: var(--muted);">📍 Davao City, Philippines</span>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>&copy; 2026 Nico Mahipus · Built with <a href="https://github.com/Nicookie19" target="_blank" rel="noopener noreferrer">lots of coffee</a></p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const btn = document.querySelector('.mobile-menu-btn');
+      const links = document.getElementById('nav-links');
+      if (!btn || !links) return;
+      btn.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }));
+      document.addEventListener('click', (e) => {
+        if (!btn.contains(e.target) && !links.contains(e.target)) {
+          links.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
