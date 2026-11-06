@@ -57,12 +57,17 @@
   <script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}</script>
 </head>
 <body>
+  <div class="ambient-background" aria-hidden="true">
+    <span class="ambient-glow ambient-glow-green"></span>
+    <span class="ambient-glow ambient-glow-purple"></span>
+    <span class="ambient-dots"></span>
+  </div>
   <a href="#main" class="skip-link">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   <nav class="navigation" aria-label="Main navigation"><div class="container nav-inner">
     <a class="logo" href="#home"><span class="logo-mark" aria-hidden="true">n.</span>nicookie<span class="muted">.dev</span></a>
     <div class="nav-links" id="nav-links"><a href="#about">About</a><a href="#skills">Toolkit</a><a href="#projects">Projects</a><a href="#contact">Let's talk <span aria-hidden="true">↗</span></a></div>
-    <div class="nav-actions"><button id="theme-toggle" class="icon-button" aria-label="Switch to light mode" title="Switch theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button><button class="menu-toggle icon-button" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button></div>
+    <div class="nav-actions"><button id="motion-toggle" class="icon-button" aria-label="Pause background animation" title="Pause background animation" hidden><span aria-hidden="true">Ⅱ</span></button><button id="theme-toggle" class="icon-button" aria-label="Switch to light mode" title="Switch theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button><button class="menu-toggle icon-button" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false">☰</button></div>
   </div></nav>
   <main id="main">
     <header class="hero container" id="home">

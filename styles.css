@@ -31,6 +31,7 @@ html {
   scroll-padding-top:95px;
 }
 body {
+  isolation:isolate;
   margin:0;
   background:var(--bg);
   color:var(--text);
@@ -1089,4 +1090,70 @@ footer .logo {
   .project-card:hover,.button:hover,.skill:hover {
     transform:none;
   }
+}
+
+/* Decorative layers stay behind the page and never intercept input. */
+.ambient-background {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+  contain:strict;
+}
+.ambient-glow {
+  position:absolute;
+  width:min(85vw, 1100px);
+  aspect-ratio:1;
+  border-radius:50%;
+  opacity:.12;
+  animation:ambient-drift 28s ease-in-out infinite alternate;
+}
+.ambient-glow-green {
+  top:-38%;
+  left:-25%;
+  background:radial-gradient(circle, var(--accent), transparent 68%);
+}
+.ambient-glow-purple {
+  right:-30%;
+  bottom:-45%;
+  background:radial-gradient(circle, var(--purple), transparent 68%);
+  animation-duration:36s;
+  animation-delay:-12s;
+  animation-direction:alternate-reverse;
+  opacity:.1;
+}
+.ambient-dots {
+  position:absolute;
+  inset:-48px;
+  opacity:.1;
+  background-image:radial-gradient(circle, var(--muted) .8px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(transparent, #000 25%, #000 75%, transparent);
+  animation:ambient-dots-drift 32s linear infinite;
+}
+html[data-theme=light] .ambient-glow {
+  opacity:.08;
+}
+html:not([data-background-enabled]) .ambient-background > span,
+html[data-background-paused] .ambient-background > span,
+html[data-page-hidden] .ambient-background > span {
+  animation-play-state:paused;
+}
+@keyframes ambient-drift {
+  from { transform:translate3d(0, 0, 0) scale(1); }
+  to { transform:translate3d(18vw, 14vh, 0) scale(1.12); }
+}
+@keyframes ambient-dots-drift {
+  to { transform:translate3d(48px, 48px, 0); }
+}
+@media (max-width:540px) {
+  .ambient-glow { width:120vw; }
+  .ambient-glow-green { top:-10%; left:-55%; }
+  .ambient-glow-purple { bottom:-10%; right:-65%; }
+  .nav-actions { gap:7px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .ambient-background > span { animation:none!important; }
+  #motion-toggle { display:none; }
 }

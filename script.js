@@ -128,3 +128,30 @@ copy.addEventListener('click', async () => {
     $('#copy-status').textContent = 'Email copied. Say hello whenever you’re ready.';
   } catch { $('#copy-status').textContent = 'Email: nmahipus_240000001368@uic.edu.ph'; }
 });
+
+// CSS handles the animation; pause it when the tab is hidden or on request.
+const motionToggle = $('#motion-toggle');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let backgroundPaused = false;
+try { backgroundPaused = localStorage.getItem('background-paused') === 'true'; } catch {}
+function updateBackgroundMotion() {
+  document.documentElement.setAttribute('data-background-enabled', '');
+  document.documentElement.toggleAttribute('data-background-paused', backgroundPaused || reducedMotion.matches);
+  motionToggle.hidden = reducedMotion.matches;
+  const label = backgroundPaused ? 'Resume background animation' : 'Pause background animation';
+  motionToggle.setAttribute('aria-label', label);
+  motionToggle.title = label;
+  motionToggle.firstElementChild.textContent = backgroundPaused ? '▶' : 'Ⅱ';
+}
+motionToggle.addEventListener('click', () => {
+  backgroundPaused = !backgroundPaused;
+  try { localStorage.setItem('background-paused', String(backgroundPaused)); } catch {}
+  updateBackgroundMotion();
+});
+reducedMotion.addEventListener('change', updateBackgroundMotion);
+function updateBackgroundVisibility() {
+  document.documentElement.toggleAttribute('data-page-hidden', document.hidden);
+}
+document.addEventListener('visibilitychange', updateBackgroundVisibility);
+updateBackgroundVisibility();
+updateBackgroundMotion();

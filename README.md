@@ -18,3 +18,5 @@ The embedded repository snapshot was fetched from GitHub on November 5, 2026. Th
 Descriptions for BrainBox Mobile, Vibe Magazine, Forma (Project-1), and AstroLabs were checked against their public READMEs. Projects without descriptions use neutral source-code summaries.
 
 To deploy on static hosting such as GitHub Pages, publish `index.html`, `styles.css`, `script.js`, and `assets/` together. No credentials are required. The avatar loads from GitHub; technology logos are local.
+
+The decorative background uses slow CSS glow and dot animations in both themes. The navigation includes a pause/resume control with a saved preference. Motion stops in hidden tabs, respects system reduced-motion settings, and stays static without JavaScript.
