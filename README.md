@@ -19,4 +19,4 @@ Descriptions for BrainBox Mobile, Vibe Magazine, Forma (Project-1), and AstroLab
 
 To deploy on static hosting such as GitHub Pages, publish `index.html`, `styles.css`, `script.js`, and `assets/` together. No credentials are required. The avatar loads from GitHub; technology logos are local.
 
-The decorative background uses slow CSS glow and dot animations in both themes. The navigation includes a pause/resume control with a saved preference. Motion stops in hidden tabs, respects system reduced-motion settings, and stays static without JavaScript.
+The decorative background uses visible drifting glows, a moving dot field, and floating particle animations in both themes. The navigation includes a pause/resume control with a saved preference. Motion stops in hidden tabs, respects system reduced-motion settings, and stays static without JavaScript.

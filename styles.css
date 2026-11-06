@@ -1106,34 +1106,34 @@ footer .logo {
   width:min(85vw, 1100px);
   aspect-ratio:1;
   border-radius:50%;
-  opacity:.12;
-  animation:ambient-drift 28s ease-in-out infinite alternate;
+  opacity:.30;
+  animation:ambient-drift 9s ease-in-out -4s infinite alternate;
 }
 .ambient-glow-green {
-  top:-38%;
-  left:-25%;
+  top:-28%;
+  left:-20%;
   background:radial-gradient(circle, var(--accent), transparent 68%);
 }
 .ambient-glow-purple {
-  right:-30%;
-  bottom:-45%;
+  right:-22%;
+  bottom:-30%;
   background:radial-gradient(circle, var(--purple), transparent 68%);
-  animation-duration:36s;
-  animation-delay:-12s;
+  animation-duration:12s;
+  animation-delay:-7s;
   animation-direction:alternate-reverse;
-  opacity:.1;
+  opacity:.24;
 }
 .ambient-dots {
   position:absolute;
   inset:-48px;
-  opacity:.1;
-  background-image:radial-gradient(circle, var(--muted) .8px, transparent 1px);
+  opacity:.23;
+  background-image:radial-gradient(circle, var(--muted) 1px, transparent 1.4px);
   background-size:48px 48px;
   mask-image:linear-gradient(transparent, #000 25%, #000 75%, transparent);
-  animation:ambient-dots-drift 32s linear infinite;
+  animation:ambient-dots-drift 4s linear infinite;
 }
 html[data-theme=light] .ambient-glow {
-  opacity:.08;
+  opacity:.18;
 }
 html:not([data-background-enabled]) .ambient-background > span,
 html[data-background-paused] .ambient-background > span,
@@ -1142,7 +1142,7 @@ html[data-page-hidden] .ambient-background > span {
 }
 @keyframes ambient-drift {
   from { transform:translate3d(0, 0, 0) scale(1); }
-  to { transform:translate3d(18vw, 14vh, 0) scale(1.12); }
+  to { transform:translate3d(30vw, 24vh, 0) scale(1.18); }
 }
 @keyframes ambient-dots-drift {
   to { transform:translate3d(48px, 48px, 0); }
@@ -1156,4 +1156,28 @@ html[data-page-hidden] .ambient-background > span {
 @media (prefers-reduced-motion:reduce) {
   .ambient-background > span { animation:none!important; }
   #motion-toggle { display:none; }
+}
+
+/* Bright, moving points make motion immediately apparent, even on phones. */
+.ambient-particle {
+  position:absolute;
+  left:var(--x);
+  top:-12px;
+  width:var(--size);
+  height:var(--size);
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px color-mix(in srgb, var(--accent) 65%, transparent);
+  opacity:0;
+  animation:ambient-particle-fall var(--duration) var(--delay) linear infinite;
+}
+.ambient-particle:nth-child(even) {
+  background:var(--purple);
+  box-shadow:0 0 12px color-mix(in srgb, var(--purple) 65%, transparent);
+}
+@keyframes ambient-particle-fall {
+  0% { transform:translate3d(0, -12px, 0); opacity:0; }
+  10% { opacity:.7; }
+  85% { opacity:.7; }
+  100% { transform:translate3d(var(--drift), calc(100vh + 24px), 0); opacity:0; }
 }
